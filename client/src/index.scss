@@ -1,0 +1,56 @@
+:root {
+  --font-l: 1.5em;
+  --font-m: 1em;
+  --font-s: 0.5em;
+
+  --border-gray: #0000001f;
+  --gray: #0000008a;
+  --black: #1c1c1e;
+  --green: #1c6257;
+  --blue: #0288d1;
+  --blue-shadow: #0289d178;
+  --red: #ff4d4f;
+  --red-shadow: #ff4d5091;
+  --pink: #f95489;
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Caveat', cursive !important;
+  }
+}
+
+.slick-slide>div>div {
+  outline: none;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../public/fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pacifico';
+  src: url('../public/fonts/Pacifico-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('../public/fonts/Caveat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

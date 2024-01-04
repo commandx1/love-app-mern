@@ -1,0 +1,17 @@
+.music {
+    svg {
+        animation: animate 1s linear alternate infinite;
+    }
+}
+
+@keyframes animate {
+    from {
+        transform: scale(1);
+        fill: #333399;
+    }
+
+    to {
+        transform: scale(1.5);
+        fill: #ff00cc;
+    }
+}

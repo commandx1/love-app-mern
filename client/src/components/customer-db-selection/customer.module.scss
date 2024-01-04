@@ -1,0 +1,17 @@
+.wrapper {
+    background-image: url('https://wallpapers.com/images/hd/couple-in-love-forming-a-heart-using-hands-xjrldsbgrajvnia7.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .vstack {
+        gap: 4px;
+        margin-top: 1em;
+        width: clamp(20vw, 16em, 80vw);
+    }
+}

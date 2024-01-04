@@ -1,0 +1,22 @@
+.slick {
+    width: 84%;
+    margin: 0 auto;
+
+    :global(.slick-arrow):before {
+        color: var(--black);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .slick {
+        width: 90%;
+    }
+
+    :global(.slick-arrow) {
+        display: none !important;
+    }
+}
+
+.slick.fullWidth {
+    width: 99%;
+}

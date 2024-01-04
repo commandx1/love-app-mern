@@ -1,0 +1,86 @@
+.banner {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: clamp(40vh, 600px, 100vh);
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+
+    svg {
+        position: absolute;
+        color: var(--pink);
+        top: 90%;
+        opacity: 0;
+        animation: animate 6s ease-in infinite;
+        font-size: 3em;
+    }
+
+    .title {
+        font-size: 3em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--pink);
+        position: relative;
+        z-index: 3;
+    }
+
+    &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border-image: fill 0 linear-gradient(#fff3, #fff);
+        position: absolute;
+    }
+}
+
+.banner.animate2 svg {
+    animation-name: animate2;
+}
+
+@keyframes animate {
+    0% {
+        top: 10%;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 90%;
+        opacity: 0;
+        transform: rotate(260deg);
+    }
+}
+
+@keyframes animate2 {
+    0% {
+        top: 100%;
+        opacity: 0;
+    }
+
+    20%,
+    60%,
+    90% {
+        transform: rotate(7deg);
+    }
+
+    40%,
+    80% {
+        transform: rotate(-7deg);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 0%;
+        opacity: 0;
+        transform: rotate(0deg);
+    }
+}

@@ -1,0 +1,16 @@
+.modal {
+    :global(.ant-modal-header) {
+        border-bottom: 0.4px solid var(--border-gray);
+        padding-bottom: 0.5em;
+    }
+
+    input, textarea {
+        font-size: 1.5em !important;
+    }
+
+    .footer {
+        justify-content: flex-end;
+        align-items: center;
+        gap: 4px;
+    }
+}

@@ -1,0 +1,19 @@
+.input {
+    &:hover {
+        border-color: var(--blue);
+        box-shadow: 1px 2px 1px var(--blue-shadow);
+    }
+}
+
+.input:global(.ant-input-status-error) {
+    &:hover {
+        box-shadow: 1px 2px 1px var(--red-shadow);
+    }
+}
+
+.textarea {
+    &:hover {
+        border-color: var(--blue);
+        box-shadow: 1px 2px 1px var(--blue-shadow);
+    }
+}

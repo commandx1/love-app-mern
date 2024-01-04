@@ -1,0 +1,22 @@
+.ceyiz {
+    width: 100%;
+
+    .container {
+        margin-top: 10vh;
+        padding-bottom: 2em;
+
+        .content {
+            padding: 2em 0;
+            gap: 2em;
+
+            .items {
+                flex: 1;
+            }
+        }
+
+        :global(.ant-row) {
+            margin-top: 1em;
+            align-items: baseline;
+        }
+    }
+}
