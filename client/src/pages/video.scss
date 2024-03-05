@@ -1,0 +1,28 @@
+.video {
+    height: 440px;
+}
+
+.video-wrapper {
+    width: 100%;
+    height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 9999;
+    background-position: center;
+    background-size: cover;
+    background-image: url(https://wallpapercosmos.com/w/full/0/2/e/174134-3840x2160-desktop-4k-valentines-day-wallpaper-image.jpg);
+
+    &-box {
+        background-image: url(https://i.pinimg.com/564x/a6/bd/ed/a6bdeddb2b5ef56f0852162a3a62da0b.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -4,7 +4,7 @@ import Loader from 'components/loader';
 import showSuccessMessage from 'helpers/show-success-message';
 import useHandleError from 'helpers/use-handle-error';
 import useHttp from 'helpers/use-http';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import modal from 'antd/lib/modal';
 import NewItemModal from 'components/ceyiz/new-item-modal';
 import { useLocation } from 'react-router-dom';
@@ -18,6 +18,21 @@ const ActionMenu = ({ anchorEl, handleMenuClose, item, setItems, setIsMemoryLoad
     const handleError = useHandleError();
     const sendRequest = useHttp();
     const location = useLocation();
+    const decodedPathname = decodeURIComponent(location.pathname);
+
+    const modalContent = useMemo(() => {
+        let type = 'Eşyayı';
+
+        if (decodedPathname === '/siir') {
+            type = 'Şiiri';
+        }
+
+        if (decodedPathname === '/anılar') {
+            type = 'Anıyı';
+        }
+
+        return type + ' silmek istediğinize emin misiniz?';
+    }, [decodedPathname]);
 
     const handleModalOpen = () => setIsFormVisible(true);
     const handleModalClose = () => setIsFormVisible(false);
@@ -57,13 +72,17 @@ const ActionMenu = ({ anchorEl, handleMenuClose, item, setItems, setIsMemoryLoad
             setIsDeleting(true);
             setIsMemoryLoading?.(true);
 
-            const decodedPathname = decodeURIComponent(location.pathname);
             const isMemory = decodedPathname === '/anılar';
+            const isPoem = decodedPathname === '/siir';
 
             let path = '/api/ceyiz/item/';
 
             if (isMemory) {
                 path = '/api/memory/';
+            }
+
+            if (isPoem) {
+                path = '/api/poem/';
             }
 
             const res = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}${path}${item._id}`, 'DELETE');
@@ -108,7 +127,7 @@ const ActionMenu = ({ anchorEl, handleMenuClose, item, setItems, setIsMemoryLoad
                 <MenuItem
                     onClick={() =>
                         modal.confirm({
-                            content: 'Eşyayı silmek istediğinize emin misiniz?',
+                            content: modalContent,
                             onOk: handleDeleteClick,
                             cancelText: 'İptal',
                         })

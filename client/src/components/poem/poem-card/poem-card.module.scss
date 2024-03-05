@@ -1,0 +1,41 @@
+.wrapper {
+    position: relative;
+    transform: scale(0.8);
+    opacity: 0;
+    animation: anim linear forwards;
+    animation-timeline: view();
+    animation-range-end: 50vh;
+
+    .vstack {
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        padding: 2em 0;
+        font-size: var(--font-l);
+    }
+
+    img {
+        width: clamp(10%, 50px, 20%);
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &[alt~="f2"] {
+            top: calc(100% - 45px);
+            left: 90%;
+            transform: rotate(180deg);
+        }
+    }
+}
+
+@keyframes anim {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

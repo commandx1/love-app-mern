@@ -1,10 +1,10 @@
 const multer = require('multer');
 
-const MIME_TYPE_MAP = {
+/* const MIME_TYPE_MAP = {
   'image/png': 'png',
   'image/jpeg': 'jpeg',
   'image/jpg': 'jpg'
-};
+}; */
 
 const fileUpload = multer();
 

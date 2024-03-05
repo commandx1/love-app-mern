@@ -9,11 +9,16 @@ import Footer from './components/footer/footer';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import CustomerDbSelection from 'components/customer-db-selection';
+import Loader from 'components/loader/loader';
+import ValentineVideo from './pages/valentine-video';
 
 const LoginPage = lazy(() => import('./pages/login'));
 const HomePage = lazy(() => import('./pages/home'));
 const CeyizPage = lazy(() => import('./pages/ceyiz'));
 const MemoryPage = lazy(() => import('./pages/memory'));
+const PoemPage = lazy(() => import('./pages/poem'));
+const PageNotFound = lazy(() => import('./pages/page-not-found'));
+const ValentineDayPage = lazy(() => import('./pages/valentine-day'));
 
 const Logout = () => {
     const { updateUser } = useAppContext();
@@ -48,7 +53,7 @@ function App() {
     }, []);
 
     return (
-        <Suspense fallback={''}>
+        <Suspense fallback={<Loader loading={true} />}>
             {user ? (
                 <VStack className='AppMain'>
                     <Menu />
@@ -57,7 +62,11 @@ function App() {
                             <Route path='/' element={<HomePage />} />
                             <Route path='/ceyiz' element={<CeyizPage />} />
                             <Route path='/anılar' element={<MemoryPage />} />
+                            <Route path='/siir' element={<PoemPage />} />
+                            <Route path='/sevgililer-gunu' element={<ValentineDayPage />} />
+                            <Route path='/sevgililer-gunu-video' element={<ValentineVideo />} />
                             <Route path='/cikis' element={<Logout />} />
+                            <Route path='*' element={<PageNotFound />} />
                         </Routes>
                     </div>
                     <Footer />
@@ -65,10 +74,16 @@ function App() {
             ) : customerDb ? (
                 <Routes>
                     <Route path='/' element={<LoginPage />} />
+                    <Route path='/sevgililer-gunu' element={<ValentineDayPage />} />
+                    <Route path='/sevgililer-gunu-video' element={<ValentineVideo />} />
+                    <Route path='*' element={<PageNotFound />} />
                 </Routes>
             ) : (
                 <Routes>
                     <Route path='/' element={<CustomerDbSelection />} />
+                    <Route path='/sevgililer-gunu' element={<ValentineDayPage />} />
+                    <Route path='/sevgililer-gunu-video' element={<ValentineVideo />} />
+                    <Route path='*' element={<PageNotFound />} />
                 </Routes>
             )}
         </Suspense>

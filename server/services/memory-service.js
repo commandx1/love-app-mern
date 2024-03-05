@@ -84,7 +84,7 @@ const CeyizService = {
             body.s3_paths = [];
         }
 
-        if (s3_paths) {
+        if (s3_paths.length) {
             body.s3_paths = s3_paths;
         }
 

@@ -12,7 +12,7 @@ import showSuccessMessage from 'helpers/show-success-message';
 import FormElements from './form-elements/form-elements';
 import { useLocation } from 'react-router-dom';
 import { useAppContext } from 'context/app-context/app-context';
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 
 const NewItemModal = ({ onCancel, open, activeCategory, setItems, editMode, item, setIsMemoryLoading }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -25,6 +25,23 @@ const NewItemModal = ({ onCancel, open, activeCategory, setItems, editMode, item
     const sendRequest = useHttp();
     const location = useLocation();
     const { user } = useAppContext();
+
+    const decodedPathname = decodeURIComponent(location.pathname);
+
+    const title = () => {
+        let title = 'Yeni ';
+        if (decodedPathname === '/ceyiz') {
+            title += 'Çeyiz';
+        }
+        if (decodedPathname === '/anılar') {
+            title += 'Anı';
+        }
+        if (decodedPathname === '/siir') {
+            title += 'Şiir';
+        }
+
+        return title;
+    };
 
     const handleModalClose = () => {
         onCancel();
@@ -77,12 +94,15 @@ const NewItemModal = ({ onCancel, open, activeCategory, setItems, editMode, item
             let method = 'POST';
             let url = `${process.env.REACT_APP_BACKEND_URL}/api/ceyiz/item`;
 
-            const decodedPathname = decodeURIComponent(location.pathname);
-
             const isMemory = decodedPathname === '/anılar';
+            const isPoem = decodedPathname === '/siir';
 
             if (isMemory) {
                 url = `${process.env.REACT_APP_BACKEND_URL}/api/memory`;
+            }
+
+            if (isPoem) {
+                url = `${process.env.REACT_APP_BACKEND_URL}/api/poem`;
             }
 
             if (editMode) {
@@ -115,29 +135,37 @@ const NewItemModal = ({ onCancel, open, activeCategory, setItems, editMode, item
 
     useEffect(() => {
         if (editMode && open) {
-            form.setFieldsValue({ ...item, date: dayjs(item.date) });
+            const fields = { ...item };
+
+            if (item.date) {
+                fields.date = dayjs(item.date);
+            }
+
+            form.setFieldsValue(fields);
         }
     }, [editMode, item, open, form]);
 
     return (
         <Modal
             destroyOnClose
-            title='YENİ EŞYA'
+            title={title()}
             open={open}
             onCancel={handleModalClose}
             className={styles.modal}
             footer={false}
         >
             <Form layout='vertical' form={form} onFinish={handleFinish}>
-                <ImageUpload
-                    open={open}
-                    isDeleted={isImageDeletedInEditMode}
-                    setIsDeleted={setIsImageDeletedInEditMode}
-                    setIsChanged={setIsImageChangedInEditMode}
-                    editMode={editMode}
-                    setImages={setImages}
-                    s3Paths={item?.s3_paths}
-                />
+                {decodedPathname !== '/siir' && (
+                    <ImageUpload
+                        open={open}
+                        isDeleted={isImageDeletedInEditMode}
+                        setIsDeleted={setIsImageDeletedInEditMode}
+                        setIsChanged={setIsImageChangedInEditMode}
+                        editMode={editMode}
+                        setImages={setImages}
+                        s3Paths={item?.s3_paths}
+                    />
+                )}
                 <div style={{ height: '1em' }} />
                 <FormElements Form={Form} />
                 <HStack className={styles.footer}>

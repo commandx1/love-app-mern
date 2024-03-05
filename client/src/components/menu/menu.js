@@ -13,10 +13,15 @@ import { CloseOutlined } from '@mui/icons-material';
 const Menu = () => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const leftMenuItems = [{ title: 'Anasayfa' }, { title: 'Galeri' }, { title: 'Çeyizler', url: 'ceyiz' }];
+    const leftMenuItems = [
+        { title: 'Anasayfa' },
+        { title: 'Galeri' },
+        { title: 'Çeyizler', url: 'ceyiz' },
+        { title: 'SEVGİLİLER GÜNÜ ❤️', url: 'sevgililer-gunu' },
+    ];
     const rightMenuItems = [
         { title: 'Anılar', url: 'anılar' },
-        { title: 'Şiirler' },
+        { title: 'Şiirler', url: 'siir' },
         { title: 'Blog' },
         { title: 'Çıkış', url: 'cikis' },
     ];

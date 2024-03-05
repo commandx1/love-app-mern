@@ -1,4 +1,4 @@
-const { default: Memory } = require('components/memory');
+import Memory from 'components/memory/memory';
 
 const MemoryPage = () => {
     return <Memory />;

@@ -10,6 +10,8 @@ const GalleryRoutes = require('./routes/gallery-routes');
 const CeyizRoutes = require('./routes/ceyiz-routes');
 const CustomerRoutes = require('./routes/customer-routes');
 const MemoryRoutes = require('./routes/memory-routes');
+const PoemRoutes = require('./routes/poem-routes');
+const PlaceRoutes = require('./routes/place-routes');
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -74,6 +76,8 @@ app.use('/api/image', S3Routes);
 app.use('/api/gallery', GalleryRoutes);
 app.use('/api/ceyiz', CeyizRoutes);
 app.use('/api/memory', MemoryRoutes);
+app.use('/api/poem', PoemRoutes);
+app.use('/api/place', PlaceRoutes);
 app.use('/api/customer', CustomerRoutes);
 
 app.use(express.static(path.join(__dirname, 'public')));

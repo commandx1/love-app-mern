@@ -32,6 +32,22 @@ const FormElements = ({ Form }) => {
             ];
         }
 
+        if (location.pathname === '/siir') {
+            return [
+                {
+                    name: 'title',
+                    label: 'Şiir Başlığı',
+                    rules: [{ required: true, message: 'Lütfen şiir başlığı giriniz.' }],
+                    component: <Input placeholder='Örn: Göğe Bakma Durağı' />,
+                },
+                {
+                    name: 'content',
+                    label: 'Şiir İçeriği',
+                    component: <TextArea placeholder='İkimiz birden sevinebiliriz göğe bakalım...' />,
+                },
+            ];
+        }
+
         return [
             {
                 name: 'title',

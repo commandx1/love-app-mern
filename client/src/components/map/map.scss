@@ -1,0 +1,30 @@
+.leaflet-container {
+    background-color: rgb(178, 210, 222);
+}
+
+.map-overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    position: relative;
+
+    .button-common {
+        position: absolute;
+        z-index: 999999999999;
+        display: flex;
+        align-self: center;
+        gap: 0.5em;
+    }
+
+    .save-button {
+        @extend .button-common;
+        bottom: 0;
+        right: 0;
+    }
+
+    .close-button {
+        @extend .button-common;
+        top: 0;
+        right: 0;
+    }
+}

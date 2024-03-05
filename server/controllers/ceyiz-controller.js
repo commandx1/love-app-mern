@@ -5,7 +5,7 @@ const CeyizController = {
     getItems: async (req, res) => {
         try {
             const response = await CeyizService.getItems(req.query.category_id);
-            res.json(response);
+            res.json(response)
         } catch (error) {
             handleError(res, error);
         }

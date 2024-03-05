@@ -1,0 +1,32 @@
+.wrapper {
+    background-image: url('./heart_couple_shadow_111873_3840x2400.jpeg');
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    width: 100vw;
+    height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 999999;
+
+    .card {
+        width: clamp(40vw, 550px, 90vw);
+
+        .emoji {
+            font-size: 3em;
+
+            &+div {
+                font-size: var(--font-l);
+
+                span {
+                    font-weight: 900;
+                    text-decoration: underline;
+                    color: var(--green);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
